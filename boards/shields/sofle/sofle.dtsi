@@ -79,6 +79,14 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7)  RC(3,8) RC(3,9)
     };
 };
 
+&usbd {
+    status = "okay";
+    cdc_acm_uart: cdc_acm_uart {
+        compatible = "zephyr,cdc-acm-uart";
+        label = "CDC_ACM_0";
+    };
+};
+
 nice_view_spi: &spi0 {
     compatible = "nordic,nrf-spim";
     pinctrl-0 = <&spi0_default>;

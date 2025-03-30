@@ -46,10 +46,29 @@ config ZMK_SPLIT
 
 if ZMK_DISPLAY
     config ZMK_DISPLAY_STATUS_SCREEN
+        bool "Status Screen"
         default y
 
-    config ZMK_DISPLAY_WORK_QUEUE_SYSTEM
-        default y
+choice ZMK_DISPLAY_WORK_QUEUE
+    default ZMK_DISPLAY_WORK_QUEUE_DEDICATED
+
+config ZMK_DISPLAY_WORK_QUEUE_DEDICATED
+    bool "Dedicated"
+
+endchoice
+
 endif # ZMK_DISPLAY
+
+config SERIAL
+    default y if ZMK_USB
+
+config USB_CDC_ACM
+    default y if SERIAL
+
+config UART_LINE_CTRL
+    default y if USB_CDC_ACM
+
+config USB_DEVICE_STACK
+    default y
 
 endif # SHIELD_SOFLE_LEFT || SHIELD_SOFLE_RIGHT
