@@ -6,7 +6,26 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
+config ZMK_USB
+    default y
+
+config ZMK_WIDGET_LAYER_STATUS
+    default y if ZMK_DISPLAY
+
+config ZMK_WIDGET_BATTERY_STATUS
+    default y if ZMK_DISPLAY
+
+config ZMK_WIDGET_OUTPUT_STATUS
+    default y if ZMK_DISPLAY
+
 endif # SHIELD_SOFLE_LEFT
+
+if SHIELD_SOFLE_RIGHT
+
+config ZMK_SPLIT_ROLE_PERIPHERAL
+    default y
+
+endif # SHIELD_SOFLE_RIGHT
 
 if SHIELD_SOFLE_LEFT || SHIELD_SOFLE_RIGHT
 
@@ -15,8 +34,9 @@ config ZMK_SPLIT
 
 if ZMK_DISPLAY
 
-config ZMK_DISPLAY_WORK_QUEUE_DEDICATED
-    default y
+choice ZMK_DISPLAY_WORK_QUEUE
+    default ZMK_DISPLAY_WORK_QUEUE_DEDICATED
+endchoice
 
 endif # ZMK_DISPLAY
 
