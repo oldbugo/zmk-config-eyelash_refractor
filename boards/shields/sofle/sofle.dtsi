@@ -1,9 +1,4 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <layouts/josefadamcik/sofle.dtsi>
-
-&josefadamcik_sofle_layout {
-    transform = <&default_transform>;
-};
 
 / {
     chosen {
