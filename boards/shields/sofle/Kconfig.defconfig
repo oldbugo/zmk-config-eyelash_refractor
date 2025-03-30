@@ -4,25 +4,27 @@ config ZMK_KEYBOARD_NAME
     default "Eyelash Sofle"
 
 config ZMK_SPLIT_ROLE_CENTRAL
+    bool
     default y
 
 config ZMK_USB
     default y
 
 config ZMK_WIDGET_LAYER_STATUS
-    default y if ZMK_DISPLAY
+    default y if ZMK_DISPLAY && ZMK_SPLIT_ROLE_CENTRAL
 
 config ZMK_WIDGET_BATTERY_STATUS
-    default y if ZMK_DISPLAY
+    default y if ZMK_DISPLAY && ZMK_SPLIT_ROLE_CENTRAL
 
 config ZMK_WIDGET_OUTPUT_STATUS
-    default y if ZMK_DISPLAY
+    default y if ZMK_DISPLAY && ZMK_SPLIT_ROLE_CENTRAL
 
 endif # SHIELD_SOFLE_LEFT
 
 if SHIELD_SOFLE_RIGHT
 
 config ZMK_SPLIT_ROLE_PERIPHERAL
+    bool
     default y
 
 endif # SHIELD_SOFLE_RIGHT
