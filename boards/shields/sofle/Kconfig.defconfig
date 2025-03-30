@@ -59,24 +59,25 @@ endchoice
 
 endif # ZMK_DISPLAY
 
-# UART and USB Configuration Chain
+# Base configurations without circular dependencies
+config SERIAL
+    default y
+
+config SERIAL_SUPPORT_INTERRUPT
+    default y
+
 config UART_INTERRUPT_DRIVEN
-    default y if ZMK_USB
+    default y
 
 config UART_LINE_CTRL
-    default y if ZMK_USB
+    default y
 
-config SERIAL
+# USB configurations with proper dependencies
+config USB_DEVICE_STACK
     default y if ZMK_USB
 
 config USB_CDC_ACM
-    depends on UART_INTERRUPT_DRIVEN
-    depends on UART_LINE_CTRL
-    depends on SERIAL
-    default y if ZMK_USB
-
-config USB_DEVICE_STACK
-    depends on ZMK_USB
+    depends on USB_DEVICE_STACK
     default y if ZMK_USB
 
 endif # SHIELD_SOFLE_LEFT || SHIELD_SOFLE_RIGHT
