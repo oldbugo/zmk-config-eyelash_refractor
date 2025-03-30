@@ -1,38 +1,40 @@
 if SHIELD_SOFLE_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "Eyelash Sofle"
+    default "Sofle"
+
+config ZMK_SPLIT_BLE
+    default y
 
 config ZMK_SPLIT_ROLE_CENTRAL
-    bool
     default y
 
 config ZMK_USB
-    bool
     default y
 
 config ZMK_WIDGET_LAYER_STATUS
-    bool
     default y if ZMK_DISPLAY
 
 config ZMK_WIDGET_BATTERY_STATUS
-    bool
     default y if ZMK_DISPLAY
 
 config ZMK_WIDGET_OUTPUT_STATUS
-    bool
     default y if ZMK_DISPLAY
 
 endif # SHIELD_SOFLE_LEFT
 
 if SHIELD_SOFLE_RIGHT
 
-config ZMK_SPLIT_ROLE_PERIPHERAL
-    bool
+config ZMK_KEYBOARD_NAME
+    default "Sofle Right"
+
+config ZMK_SPLIT_BLE
     default y
 
+config ZMK_SPLIT_ROLE_CENTRAL
+    default n
+
 config ZMK_USB
-    bool
     default n
 
 endif # SHIELD_SOFLE_RIGHT
@@ -43,11 +45,11 @@ config ZMK_SPLIT
     default y
 
 if ZMK_DISPLAY
+    config ZMK_DISPLAY_STATUS_SCREEN
+        default y
 
-choice ZMK_DISPLAY_WORK_QUEUE
-    default ZMK_DISPLAY_WORK_QUEUE_DEDICATED
-endchoice
-
+    config ZMK_DISPLAY_WORK_QUEUE_SYSTEM
+        default y
 endif # ZMK_DISPLAY
 
 endif # SHIELD_SOFLE_LEFT || SHIELD_SOFLE_RIGHT
