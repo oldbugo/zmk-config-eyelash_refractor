@@ -1,0 +1,13 @@
+file_format: "1"
+id: sofle
+name: Sofle
+type: shield
+url: https://github.com/josefadamcik/sofle
+requires: [pro_micro]
+features:
+  - keys
+  - encoder
+  - display
+siblings:
+  - sofle_left
+  - sofle_right
